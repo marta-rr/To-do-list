@@ -1,0 +1,26 @@
+html, body{
+    margin:20px;
+    padding:0;
+    font-family: fantasy,
+    times;
+    background-color:rgb(229, 247, 181)
+}
+
+h1{
+    text-align:center;
+    margin:30px;
+    color:rgb(150, 207, 6);
+    font-weight: bold;
+}
+
+#new-task{
+    width:300px;
+    text-align:center;
+    justify-content:center;
+    margin:auto;
+    border-radius:30px;
+}
+
+.delete {
+    margin-right: 5px;
+}
