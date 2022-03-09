@@ -1,26 +1,68 @@
 html, body{
     margin:20px;
     padding:0;
-    font-family: fantasy,
-    times;
+    font-family: Pacifico, open sans;
+    text-shadow:darkblue;
     background-color:rgb(229, 247, 181)
 }
 
 h1{
     text-align:center;
     margin:30px;
-    color:rgb(150, 207, 6);
+    color:rgb(223, 228, 211);
     font-weight: bold;
+    text-shadow: 5px 0 7px black;
+    font-size:55px;
 }
 
 #new-task{
-    width:300px;
     text-align:center;
-    justify-content:center;
-    margin:auto;
-    border-radius:30px;
+}
+
+.input-question {
+    width: 250px;
+    height:50px;
+    font-size:22px;
+    box-shadow:10px 10px 10px black;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 5px;
+}
+
+
+.create-task{
+    margin-top:20px;
+    margin-bottom: 30px;
+    box-shadow:20px 10px 20px black;
+    background-color: rgb(165, 199, 176);
+    border-radius:5px;
+    font-size: 20px;
+    width:80px;
+    height:40px;
+    font-weight:bold;
+}
+
+.list{
+  margin-left: auto;
+  margin-right: auto;
+  width: 10em;
+  font-family: pacifico;
+  font-size:22px;
+}
+
+.mark-complete{
+    margin-right:10px;
+    border-radius: 20px;
 }
 
 .delete {
     margin-right: 5px;
+    margin-left: 15px;
+    font-size:20px;
+    border-radius:10px;
+    height:10%;
+    background-color:rgb(201, 136, 136);
+    font-weight:bold;
+
 }
