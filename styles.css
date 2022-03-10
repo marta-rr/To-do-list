@@ -1,9 +1,10 @@
 html, body{
-    margin:20px;
-    padding:0;
     font-family: pacifico;
-    text-shadow:darkblue;
-    background-color:rgb(189, 216, 92)
+    background-color:rgb(189, 216, 92);
+}
+
+.main-container{
+    min-width:100%;
 }
 
 h1{
@@ -20,25 +21,58 @@ h1{
 }
 
 .input-question {
-    width: 250px;
-    height:50px;
+    width: 14em;
+    height:2em;
     font-size:22px;
     text-align: center;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
     border-color: black;
+    border-style:solid;
 }
 
 .create-task{
-    border-left:none;
+    text-align:center;
+    color:rgb(97, 240, 14);
     border-color: black;
-    background-color: rgb(9, 241, 82);
+    background-color:black;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     font-size: 23px;
     width:50px;
-    height:50px;
+    height:1.93em;
     font-weight:bold;
+}
+
+@media screen and (max-width:499px){
+    .create-task {
+        text-align:center;
+        display:inline-flex;
+        justify-content:center;
+        padding:5px;
+        border-style:none;
+        color: rgb(97, 240, 14);
+        margin-left:15px;
+        background-color: black;
+        border-radius: 5px;
+        font-size: 23px;
+        width: 45px;
+        height: 2.1em;
+        font-weight: bold;
+    }
+
+    .input-question {
+        width: 14em;
+        height: 2em;
+        font-size: 22px;
+        text-align: center;
+        border-radius: 5px;
+        border-color: black;
+        border-style: solid;
+    }
+
 }
 
 .list{
@@ -46,7 +80,9 @@ h1{
   margin-bottom:45px;
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
+  padding-left:20px;
+  padding-right:20px;
+  width: 14em;
   font-family: pacifico;
   font-size:25px;
 }
@@ -58,15 +94,15 @@ h1{
 }
 
 .delete {
+    color:rgb(238, 10, 10);
     font-size:17px;
     border-color:black;
-    border-radius:8px;
-    background-color:rgb(201, 136, 136);
+    border-radius:6px;
+    background-color:rgb(8, 8, 8);
+    font-weight:bold;
 }
 
 .bonus-feature{
-     margin-left: auto;
-     margin-right: auto;
      margin: auto;
      width: 400px;
      font-family: pacifico;
@@ -76,9 +112,17 @@ h1{
 .bonus{
     margin-top:45px;
     margin-bottom:45px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left:20px;
+    padding-right:20px;
+    width: 14em;
+    font-family: pacifico;
+    font-size:25px;
 }
 
 .button-bonus{
+    text-align:center;
     display:inline-flex;
     margin:20px;
     font-size:20px;
@@ -89,10 +133,12 @@ h1{
     margin-right:15px;
     border-radius:10px;
     padding:10px;
-    background-color:white;
+    background-color:rgb(210, 219, 198);
     font-weight:bold;
-    width:105px;
+    width:110px;
     box-shadow:2px 2px 2px;
+    color:black;
+    border-color:black;
 }
 
 .show-active{
@@ -100,19 +146,24 @@ h1{
     margin-right:15px;
     border-radius:10px;
     padding:10px;
-    width:105px;
-    background-color:white;
+    width:110px;
+    background-color:rgb(210, 219, 198);
     font-weight:bold;
     box-shadow:2px 2px 2px;
+    color:black;
+    border-color:black;
 }
 
 .show-all{
+    padding-right:20px;
     max-height:50px;
     border-radius:10px;
     padding:10px;
-    width:105px;
-    background-color:white;
+    width:110px;
+    background-color:rgb(210, 219, 198);
     font-weight:bold;
     box-shadow:2px 2px 2px;
+    color:black;
+    border-color:black;
 }
 
