@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-$('.button-bonus').append('<button class="show-completed">Complete</button>');
+$('.button-bonus').append('<button class="show-completed">Completed</button>');
 $('.button-bonus').append('<button class="show-active">Active</button>');
 $('.button-bonus').append('<button class="show-all">All</button>');
 
@@ -118,9 +118,6 @@ $.ajax({
  type: 'PUT',
     url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks/' + id + '/mark_complete?api_key=296',
     dataType: 'json',
-    success: function (response, textStatus) {
-      displayTasks();
-    },
     error: function (request, textStatus, errorMessage) {
       console.log(errorMessage);
     }
@@ -132,9 +129,6 @@ $.ajax({
     type: 'PUT',
     url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks/' + id + '/mark_active?api_key=296',
     dataType: 'json',
-    success: function (response, textStatus) {
-      displayTasks();
-    },
     error: function (request, textStatus, errorMessage) {
       console.log(errorMessage);
     }
