@@ -1,21 +1,3 @@
-// $(document).ready(function(){
-//   $.ajax({
-//     type: 'GET',
-//     url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks?api_key=296',
-//     dataType: 'json',
-//     success: function (response, textStatus) {
-//         response.tasks.forEach(function (task) {
-//      console.log(response)})
-//     },
-//     error: function (request, textStatus, errorMessage) {
-//       console.log(errorMessage);
-//     }
-//   });
-// });
-
-
-
-
 
 $(document).ready(function(){
 
@@ -23,19 +5,20 @@ $('.button-bonus').append('<button class="show-completed">Complete</button>');
 $('.button-bonus').append('<button class="show-active">Active</button>');
 $('.button-bonus').append('<button class="show-all">All</button>');
 
-function displayTasks() {
+function displayTasks(){
     $.ajax({
       type: 'GET',
       url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks?api_key=296',
       dataType: 'json',
       success: function (response, textStatus) {
         $('.list').empty();
+        $('.bonus').empty();
         response.tasks.forEach(function (task) {
           $('.list').append('<div class="row"><div class="col-9">'+
             '<input type="checkbox"class="mark-complete"data-id="' +
             task.id+'"'+(task.completed ? 'checked' : '')+'>'
-            + task.content +
-            '</div><div class="col-3"><button class="delete" data-id="' +
+            +  task.content +
+            '</span></div><div class="col-3"><button class="delete" data-id="' +
             task.id + '">Delete</button></div></div>');
         })
       },
@@ -46,29 +29,33 @@ function displayTasks() {
 }
 
 function checkCompletedTasks(){
-  $.ajax({
-    type: 'GET',
-    url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks?api_key=296',
-    dataType: 'json',
-    success: function (response, textStatus) {
-        $('.list').empty();
-        $('.bonus').empty();
-      response.tasks.forEach(function (task){
-          if(task.completed){
-            $('.bonus').append('<div class="row"><div class="col-9">'+
-                '<input type="checkbox"class="mark-complete"data-id="' +
-                task.id+'"'+(task.completed ? 'checked' : '')+'>'
-                + task.content +
-                '</div><div class="col-3"><button class="delete" data-id="' +
-                task.id + '">Delete</button></div></div>');
-          }
-      })
-    },
-    error: function (request, textStatus, errorMessage) {
-      console.log(errorMessage);
-    }
-  });
+   $.ajax({
+     type: 'GET',
+     url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks?api_key=296',
+     dataType: 'json',
+     success: function (response, textStatus) {
+         $('.list').empty();
+         $('.bonus').empty();
+       response.tasks.forEach(function (task){
+           if(task.completed){
+             $('.bonus').append('<div class="row"><div class="col-9">'+
+                 '<input type="checkbox"class="mark-complete"data-id="' +
+                 task.id+'"'+(task.completed ? 'checked' : '')+'>'
+                 + task.content +
+                 '</div><div class="col-3"><button class="delete" data-id="' +
+                 task.id + '">Delete</button></div></div>');
+           }
+       })
+     },
+     error: function (request, textStatus, errorMessage) {
+       console.log(errorMessage);
+     }
+   });
 }
+
+$(document).on('click', '.show-completed', function () {
+  checkCompletedTasks($(this).data('id'));
+});
 
 function checkActive(){
   $.ajax({
@@ -80,10 +67,12 @@ function checkActive(){
         $('.bonus').empty();
       response.tasks.forEach(function (task){
           if(task.completed == false){
-            $('.bonus').append('<div class="row"><p>'+ '<input type="checkbox"class="mark-complete"data-id="' + 
-            task.id+'"'+(task.completed ? 'checked' : '')+'>'+ task.content +
-            '</p><button class="delete" data-id="' +
-            task.id + '">Delete</button>');
+            $('.bonus').append('<div class="row"><div class="col-9">'+
+                '<input type="checkbox"class="mark-complete"data-id="' +
+                task.id+'"'+(task.completed ? 'checked' : '')+'>'
+                + task.content +
+                '</div><div class="col-3"><button class="delete" data-id="' +
+                task.id + '">Delete</button></div></div>');
           }
       })
     },
@@ -106,10 +95,12 @@ function checkAll(){
         $('.list').empty();
         $('.bonus').empty();
       response.tasks.forEach(function (task){
-            $('.bonus').append('<div class="row"><p>'+ '<input type="checkbox"class="mark-complete"data-id="' + 
-            task.id+'"'+(task.completed ? 'checked' : '')+'>'+ task.content +
-            '</p><button class="delete" data-id="' +
-            task.id + '">Delete</button>');
+            $('.bonus').append('<div class="row"><div class="col-9">'+
+                '<input type="checkbox"class="mark-complete"data-id="' +
+                task.id+'"'+(task.completed ? 'checked' : '')+'>'
+                + task.content +
+                '</div><div class="col-3"><button class="delete" data-id="' +
+                task.id + '">Delete</button></div></div>');
       })
     },
     error: function (request, textStatus, errorMessage) {
@@ -120,11 +111,6 @@ function checkAll(){
 
 $(document).on('click', '.show-all', function () {
   checkAll($(this).data('id'));
-});
-
-
-$(document).on('click', '.show-completed', function () {
-  checkCompletedTasks($(this).data('id'));
 });
 
 function markTaskCompleted(id){
@@ -155,11 +141,11 @@ $.ajax({
   });
 }
 
-$(document).on('change', '.mark-complete', function() {
-  if(this.checked){
+$(document).on('change', '.mark-complete', function(task) {
+    if(this.checked){
        markTaskCompleted($(this).data('id'));
-  }else{
-    markTaskActive($(this).data('id'));
+    } else{
+       markTaskActive($(this).data('id'));
   }
 });
 
@@ -177,7 +163,6 @@ function createTask() {
     success: function (response, textStatus) {
         $('.input-question').val('');
         displayTasks();
-        console.log(response);
     },
     error: function (request, textStatus, errorMessage) {
         console.log(errorMessage);
@@ -208,6 +193,4 @@ $.ajax({
 $(document).on('click', '.delete', function () {
   deleteTask($(this).data('id'))
 });
-
-
 });
