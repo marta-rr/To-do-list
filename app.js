@@ -19,9 +19,9 @@
 
 $(document).ready(function(){
 
-$('.button-bonus').append('<div class="row"><p>' + '<button class="show-completed">Completed</button>');
-$('.button-bonus').append('<div class="row"><p>' + '<button class="show-active">Active</button>');
-$('.button-bonus').append('<div class="row"><p>' + '<button class="show-all">All</button>');
+$('.button-bonus').append('<button class="show-completed">Complete</button>');
+$('.button-bonus').append('<button class="show-active">Active</button>');
+$('.button-bonus').append('<button class="show-all">All</button>');
 
 function displayTasks() {
     $.ajax({
@@ -31,10 +31,12 @@ function displayTasks() {
       success: function (response, textStatus) {
         $('.list').empty();
         response.tasks.forEach(function (task) {
-          $('.list').append('<div class="row"><p>'+ '<input type="checkbox"class="mark-complete"data-id="' + 
-            task.id+'"'+(task.completed ? 'checked' : '')+'>'+ task.content +
-            '</p><button class="delete" data-id="' +
-            task.id + '">Delete</button>');
+          $('.list').append('<div class="row"><div class="col-9">'+
+            '<input type="checkbox"class="mark-complete"data-id="' +
+            task.id+'"'+(task.completed ? 'checked' : '')+'>'
+            + task.content +
+            '</div><div class="col-3"><button class="delete" data-id="' +
+            task.id + '">Delete</button></div></div>');
         })
       },
       error: function (request, textStatus, errorMessage) {
@@ -53,7 +55,12 @@ function checkCompletedTasks(){
         $('.bonus').empty();
       response.tasks.forEach(function (task){
           if(task.completed){
-            $('.bonus').append('<div class="row"><p>' + task.content)
+            $('.bonus').append('<div class="row"><div class="col-9">'+
+                '<input type="checkbox"class="mark-complete"data-id="' +
+                task.id+'"'+(task.completed ? 'checked' : '')+'>'
+                + task.content +
+                '</div><div class="col-3"><button class="delete" data-id="' +
+                task.id + '">Delete</button></div></div>');
           }
       })
     },
@@ -73,7 +80,10 @@ function checkActive(){
         $('.bonus').empty();
       response.tasks.forEach(function (task){
           if(task.completed == false){
-            $('.bonus').append('<div class="row"><p>' + task.content)
+            $('.bonus').append('<div class="row"><p>'+ '<input type="checkbox"class="mark-complete"data-id="' + 
+            task.id+'"'+(task.completed ? 'checked' : '')+'>'+ task.content +
+            '</p><button class="delete" data-id="' +
+            task.id + '">Delete</button>');
           }
       })
     },
@@ -96,7 +106,10 @@ function checkAll(){
         $('.list').empty();
         $('.bonus').empty();
       response.tasks.forEach(function (task){
-            $('.bonus').append('<div class="row"><p>' + task.content)
+            $('.bonus').append('<div class="row"><p>'+ '<input type="checkbox"class="mark-complete"data-id="' + 
+            task.id+'"'+(task.completed ? 'checked' : '')+'>'+ task.content +
+            '</p><button class="delete" data-id="' +
+            task.id + '">Delete</button>');
       })
     },
     error: function (request, textStatus, errorMessage) {

@@ -46,9 +46,18 @@ h1{
 .list{
   margin-left: auto;
   margin-right: auto;
-  width: 10em;
+  width: 400px;
   font-family: pacifico;
-  font-size:22px;
+  font-size:25px;
+}
+
+.bonus{
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    margin:auto;
+    width: 400px;
+    font-family: pacifico;
+    font-size: 25px;
 }
 
 .mark-complete{
@@ -57,12 +66,57 @@ h1{
 }
 
 .delete {
-    margin-right: 5px;
-    margin-left: 15px;
+    /* margin-right: 5px;
+    margin-left: 15px; */
     font-size:20px;
     border-radius:10px;
-    height:10%;
+    /* height:10%; */
     background-color:rgb(201, 136, 136);
     font-weight:bold;
-
+    float:inline-end;
 }
+
+.bonus-feature{
+    text-align:center; 
+    margin:auto; 
+    /* width:10em; */
+}
+
+.button-bonus{
+    /* text-align:center; */
+    display:inline-block;
+    margin:20px;
+    font-size:22px;
+}
+
+.show-completed{
+    margin-right:30px;
+    border-radius:10px;
+    padding:10px;
+    background-color:white;
+    font-weight:bold;
+    width:120px;
+    box-shadow:2px 2px 2px;
+}
+
+.show-active{
+    margin-right:30px;
+    border-radius:10px;
+    padding:10px;
+    width:120px;
+    background-color:white;
+    font-weight:bold;
+    box-shadow:2px 2px 2px;
+}
+
+.show-all{
+    border-radius:10px;
+    padding:10px;
+    width:120px;
+    background-color:white;
+    font-weight:bold;
+    box-shadow:2px 2px 2px;
+}
+
+
+
