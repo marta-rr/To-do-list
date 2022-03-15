@@ -4,6 +4,8 @@ $(document).ready(function(){
 $('.button-bonus').append('<button class="show-completed">Completed</button>');
 $('.button-bonus').append('<button class="show-active">Active</button>');
 $('.button-bonus').append('<button class="show-all">All</button>');
+let status = '';
+
 
 function displayTasks(){
     $.ajax({
@@ -38,6 +40,7 @@ function checkCompletedTasks(){
          $('.bonus').empty();
        response.tasks.forEach(function (task){
            if(task.completed){
+             status = 'completed';
              $('.bonus').append('<div class="row"><div class="col-9">'+
                  '<input type="checkbox"class="mark-complete"data-id="' +
                  task.id+'"'+(task.completed ? 'checked' : '')+'>'
@@ -67,6 +70,7 @@ function checkActive(){
         $('.bonus').empty();
       response.tasks.forEach(function (task){
           if(task.completed == false){
+            status = 'active';
             $('.bonus').append('<div class="row"><div class="col-9">'+
                 '<input type="checkbox"class="mark-complete"data-id="' +
                 task.id+'"'+(task.completed ? 'checked' : '')+'>'
@@ -95,6 +99,7 @@ function checkAll(){
         $('.list').empty();
         $('.bonus').empty();
       response.tasks.forEach(function (task){
+          status = 'all';
             $('.bonus').append('<div class="row"><div class="col-9">'+
                 '<input type="checkbox"class="mark-complete"data-id="' +
                 task.id+'"'+(task.completed ? 'checked' : '')+'>'
@@ -176,7 +181,13 @@ $.ajax({
  type: 'DELETE',
   url: 'https://altcademy-to-do-list-api.herokuapp.com/tasks/' + id + '?api_key=296',
   success: function (response, textStatus) {
-    displayTasks();
+    if(status == 'completed'){
+      checkCompletedTasks();
+    }else if(status == 'active'){
+      checkActive();
+    }
+    else if(status == 'all'){
+      checkAll();}
   },
   error: function (request, textStatus, errorMessage) {
     console.log(errorMessage);
